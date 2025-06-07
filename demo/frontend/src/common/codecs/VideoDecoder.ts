@@ -113,15 +113,18 @@ function decodeInternal(
           // video will be black. Note, the default VideoFrame.clone doesn't work
           // and it is using a frame cloning found here:
           // https://webcodecs-blogpost-demo.glitch.me/
-          if (
-            (isAndroid && isChrome) ||
-            (isWindows && isChrome) ||
-            (isWindows && isEdge)
-          ) {
-            const clonedFrame = await cloneFrame(inputFrame);
-            inputFrame.close();
-            inputFrame = clonedFrame;
-          }
+          // if (
+          //   (isAndroid && isChrome) ||
+          //   (isWindows && isChrome) ||
+          //   (isWindows && isEdge)
+          // ) {
+          //   const clonedFrame = await cloneFrame(inputFrame);
+          //   inputFrame.close();
+          //   inputFrame = clonedFrame;
+          // }
+          const clonedFrame = await cloneFrame(inputFrame);
+          inputFrame.close();
+          inputFrame = clonedFrame;
 
           const sample = globalSamples[frame_n];
           if (sample != null) {
